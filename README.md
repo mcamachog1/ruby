@@ -1,2 +1,2 @@
 # ruby
-ruby training
+ruby training 
