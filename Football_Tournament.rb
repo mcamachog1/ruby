@@ -47,15 +47,15 @@ def game (home_team, visit_team, home_score, visit_score)
 end
 
 #Inicializar equipos
+#Nombres
 team_a = Team.new
 team_a.name = "Team A"
-
 team_b, team_c, team_d = Team.new, Team.new, Team.new
 team_b.name, team_c.name, team_d.name = "Team B", "Team C", "Team D"
-
+#Puntos
 team_a.points, team_b.points, team_c.points, team_d.points = 0,0,0,0
 
-#Juegos
+#Cargar juegos
 game(team_a,team_b,3,1)
 game(team_c,team_d,0,0)
 game(team_a,team_c,1,1)
@@ -63,28 +63,23 @@ game(team_b,team_d,2,3)
 game(team_a,team_d,2,1)
 game(team_b,team_c,3,1)
 
-
-
-#Imprimir resumen
-puts team_a.name.upcase + " " + team_a.points.to_s
-puts team_b.name.upcase + " " + team_b.points.to_s
-puts team_c.name.upcase + " " + team_c.points.to_s
-puts team_d.name.upcase + " " + team_d.points.to_s
-
-#Falta ordenar
-#El ordernar no funciona
-
+#Imprimir resultados
 final_table={}
 final_table[team_a.name] = team_a.points
 final_table[team_b.name] = team_b.points
 final_table[team_c.name] = team_c.points
 final_table[team_d.name] = team_d.points
 
-final_table.sort_by(&:last)
+#opcion 1
+#puts final_table.sort { |a, b| b[1] <=> a[1] }
 
-final_table.values.each { |value|
-  puts value 
-}
+#opcion 2
+puts "**** Final Tournament Results ****"
+final_table.keys.sort_by { |key| final_table[key] }.reverse.each do |key|
+      puts key + "     " + final_table[key].to_s
+  end
+
+
 
 
 
