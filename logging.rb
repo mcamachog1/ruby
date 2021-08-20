@@ -12,17 +12,15 @@ to the method that displays the final standings and all the constructors.
 =end
 
 module Loggin
-  
-  def log(message)
-    puts "*** INFO  -- ***: #{message}"
+  def available_levels
+    ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
   end
 
-  def log2(message, level)
-  	available_levels = ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+  def log(message, level = 'INFO')
   	if available_levels.member? level
     	puts "*** #{level}  -- ***: #{message}" 
     else
-    	puts "Error Level '#{level}' not available"
+      throw "Error Level '#{level}' not available"
     end
   end  
 end

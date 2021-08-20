@@ -35,15 +35,23 @@ class Team
 end
 
 #Funcion
-def game (home_team, visit_team, home_score, visit_score)
-	if home_score > visit_score
-		home_team.add_points 3
-	elsif visit_score > home_score
-		visit_team.add_points 3
-	else
-		home_team.add_points 1
-		visit_team.add_points 1
-	end
+
+class game
+  def initialize(home_team, equipoB)
+    @home_team = home_team
+    @equipoB = equipoB
+  end
+
+  def play (home_score, visit_score)
+    if home_score > visit_score
+      @home_team.add_points 3
+    elsif visit_score > home_score
+      visit_team.add_points 3
+    else
+      home_team.add_points 1
+      visit_team.add_points 1
+    end
+  end
 end
 
 #Inicializar equipos
