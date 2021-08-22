@@ -11,24 +11,42 @@ Then, modify the Football Tournament exercise from the previous level and add lo
 to the method that displays the final standings and all the constructors.
 =end
 
+
 module Loggin
+  require 'logger' 
   def available_levels
     ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
   end
 
   def log(message, level = 'INFO')
-  	if available_levels.member? level
-    	puts "*** #{level}  -- ***: #{message}" 
+    if available_levels.member? level    
+      logger = Logger.new(STDOUT) 
+      if level == "DEBUG"
+        logger.level = Logger::DEBUG
+        logger.debug message 
+      elsif level == "WARN"
+        logger.level = Logger::WARN
+        logger.warn message
+      elsif level == "ERROR"
+        logger.level = Logger::ERROR 
+        logger.error message
+      elsif level == "FATAL"
+        logger.level = Logger::FATAL
+        logger.fatal message
+      else        
+        logger.level = Logger::INFO
+        logger.info message
+      end
     else
       throw "Error Level '#{level}' not available"
     end
-  end  
+  end 
 end
 
 include Loggin
 
-
 log "It is an INFO message"
-log2 "It is a WARN message", "WARN" 
-log2 "It is a WARN message", "WARM" 
-log2 "It is a DEBUG message", "DEBUG" 
+log "It is a WARN message", "WARN" 
+log "It is an ERROR message", "ERROR"
+log "It is another INFO message", "INFO"  
+log "It is a WARN message", "WARN2" 

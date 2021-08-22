@@ -15,78 +15,88 @@ standings table in order (first team with the most points received;
 last team with the least points received).
 =end
 
-#Clase
+#Clases
 class Team
-  def name=(name)
+  attr_accessor :name, :points
+  def initialize(name)  
     @name = name
+    @points = 0
   end
-  def name
-    @name
-  end
-  def points=(points)
-    @points = points
-  end
-  def points
-    @points
-  end
+  
   def add_points(points)
-  	@points += points
+    @points += points
+  end
+
+  def print
+    puts "#{@name} == #{@points}"
   end
 end
 
-#Funcion
-
-class game
-  def initialize(home_team, equipoB)
+class Game
+   def initialize(home_team, visit_team)
     @home_team = home_team
-    @equipoB = equipoB
+    @visit_team = visit_team
+    @home_score=0
+    @visit_score=0
   end
-
   def play (home_score, visit_score)
+    @home_score=home_score
+    @visit_score=visit_score
     if home_score > visit_score
       @home_team.add_points 3
     elsif visit_score > home_score
-      visit_team.add_points 3
+      @visit_team.add_points 3
     else
-      home_team.add_points 1
-      visit_team.add_points 1
+      @home_team.add_points 1
+      @visit_team.add_points 1
+    end
+  end
+  def print
+    puts "Equipo Local: #{@home_team.name} -- Equipo Visitante: #{@visit_team.name} -- Resultado #{@home_score} X #{@visit_score} "
+  end
+end
+
+class Finaltable
+  attr_reader :tabla
+  def initialize(lista_equipos)
+    @tabla={}
+    lista_equipos.each do |team|
+      @tabla[team.name] = team.points
+    end
+  end
+
+  def print
+    puts "** Resultados **"
+    tabla.sort { |a, b| b[1] <=> a[1] }.each do |a, b|
+      puts "#{a} == #{b}"
     end
   end
 end
 
-#Inicializar equipos
-#Nombres
-team_a = Team.new
-team_a.name = "Team A"
-team_b, team_c, team_d = Team.new, Team.new, Team.new
-team_b.name, team_c.name, team_d.name = "Team B", "Team C", "Team D"
-#Puntos
-team_a.points, team_b.points, team_c.points, team_d.points = 0,0,0,0
+#Equipos
+equipo_A = Team.new("Equipo A")
+equipo_B = Team.new("Equipo B")
+equipo_C = Team.new("Equipo C")
+equipo_D = Team.new("Equipo D")
 
-#Cargar juegos
-game(team_a,team_b,3,1)
-game(team_c,team_d,0,0)
-game(team_a,team_c,1,1)
-game(team_b,team_d,2,3)
-game(team_a,team_d,2,1)
-game(team_b,team_c,3,1)
+#Juegos 
+game_1 = Game.new(equipo_A, equipo_B)
+game_2 = Game.new(equipo_C, equipo_D)
+game_3 = Game.new(equipo_A, equipo_C)
+game_4 = Game.new(equipo_B, equipo_D)
+game_5 = Game.new(equipo_A, equipo_D)
+game_6 = Game.new(equipo_B, equipo_C)
 
-#Imprimir resultados
-final_table={}
-final_table[team_a.name] = team_a.points
-final_table[team_b.name] = team_b.points
-final_table[team_c.name] = team_c.points
-final_table[team_d.name] = team_d.points
+#Resultados
+game_1.play(3,1)
+game_2.play(0,0)
+game_3.play(1,1)
+game_4.play(2,3)
+game_5.play(2,1)
+game_6.play(3,1)
 
-#opcion 1
-#puts final_table.sort { |a, b| b[1] <=> a[1] }
-
-#opcion 2
-puts "**** Final Tournament Results ****"
-final_table.keys.sort_by { |key| final_table[key] }.reverse.each do |key|
-      puts key + "     " + final_table[key].to_s
-  end
-
+#Tabla Final
+Finaltable.new([equipo_A, equipo_B, equipo_C, equipo_D]).print
 
 
 
