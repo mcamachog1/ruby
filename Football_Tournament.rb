@@ -15,31 +15,69 @@ standings table in order (first team with the most points received;
 last team with the least points received).
 =end
 
+module Loggin
+  require 'logger' 
+  def available_levels
+    ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+  end
+
+  def log(message, level = 'INFO')
+    if available_levels.member? level    
+      logger = Logger.new(STDOUT) 
+      if level == "DEBUG"
+        logger.level = Logger::DEBUG
+        logger.debug message 
+      elsif level == "WARN"
+        logger.level = Logger::WARN
+        logger.warn message
+      elsif level == "ERROR"
+        logger.level = Logger::ERROR 
+        logger.error message
+      elsif level == "FATAL"
+        logger.level = Logger::FATAL
+        logger.fatal message
+      else        
+        logger.level = Logger::INFO
+        logger.info message
+      end
+    else
+      throw "Error Level '#{level}' not available"
+    end
+  end 
+end
+
 #Clases
 class Team
+  include Loggin
   attr_accessor :name, :points
   def initialize(name)  
+    log("Inicializando equipo")
     @name = name
     @points = 0
   end
   
   def add_points(points)
+    log("Sumando puntos para #{name}")
     @points += points
   end
 
   def print
+    log("Imprimiendo equipo")
     puts "#{@name} == #{@points}"
   end
 end
 
 class Game
+   include Loggin
    def initialize(home_team, visit_team)
+    log("Inicializando Juegos")
     @home_team = home_team
     @visit_team = visit_team
     @home_score=0
     @visit_score=0
   end
   def play (home_score, visit_score)
+    log("Cargando puntuacion")
     @home_score=home_score
     @visit_score=visit_score
     if home_score > visit_score
@@ -52,13 +90,16 @@ class Game
     end
   end
   def print
+    log("Imprimiendo resultados")
     puts "Equipo Local: #{@home_team.name} -- Equipo Visitante: #{@visit_team.name} -- Resultado #{@home_score} X #{@visit_score} "
   end
 end
 
 class Finaltable
+  include Loggin
   attr_reader :tabla
   def initialize(lista_equipos)
+    log("Inicializando tabla de resultados")
     @tabla={}
     lista_equipos.each do |team|
       @tabla[team.name] = team.points
@@ -66,6 +107,7 @@ class Finaltable
   end
 
   def print
+    log("Imprimiendo tabla de resultados")
     puts "** Resultados **"
     tabla.sort { |a, b| b[1] <=> a[1] }.each do |a, b|
       puts "#{a} == #{b}"
@@ -78,6 +120,8 @@ equipo_A = Team.new("Equipo A")
 equipo_B = Team.new("Equipo B")
 equipo_C = Team.new("Equipo C")
 equipo_D = Team.new("Equipo D")
+
+equipo_A.print
 
 #Juegos 
 game_1 = Game.new(equipo_A, equipo_B)
@@ -97,7 +141,3 @@ game_6.play(3,1)
 
 #Tabla Final
 Finaltable.new([equipo_A, equipo_B, equipo_C, equipo_D]).print
-
-
-
-
