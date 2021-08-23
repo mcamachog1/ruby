@@ -19,8 +19,8 @@ module Loggin
   end
 
   def log(message, level = 'INFO')
+    logger = Logger.new(STDOUT)
     if available_levels.member? level    
-      logger = Logger.new(STDOUT) 
       if level == "DEBUG"
         logger.level = Logger::DEBUG
         logger.debug message 
@@ -38,15 +38,12 @@ module Loggin
         logger.info message
       end
     else
-      throw "Error Level '#{level}' not available"
+      begin
+        throw "Error: Level '#{level}' not available"
+      rescue
+        logger.level = Logger::ERROR 
+        logger.error "Error: Level '#{level}' not available"
+      end
     end
   end 
 end
-
-include Loggin
-
-log "It is an INFO message"
-log "It is a WARN message", "WARN" 
-log "It is an ERROR message", "ERROR"
-log "It is another INFO message", "INFO"  
-log "It is a WARN message", "WARN2" 

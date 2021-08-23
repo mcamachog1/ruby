@@ -15,36 +15,7 @@ standings table in order (first team with the most points received;
 last team with the least points received).
 =end
 
-module Loggin
-  require 'logger' 
-  def available_levels
-    ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
-  end
-
-  def log(message, level = 'INFO')
-    if available_levels.member? level    
-      logger = Logger.new(STDOUT) 
-      if level == "DEBUG"
-        logger.level = Logger::DEBUG
-        logger.debug message 
-      elsif level == "WARN"
-        logger.level = Logger::WARN
-        logger.warn message
-      elsif level == "ERROR"
-        logger.level = Logger::ERROR 
-        logger.error message
-      elsif level == "FATAL"
-        logger.level = Logger::FATAL
-        logger.fatal message
-      else        
-        logger.level = Logger::INFO
-        logger.info message
-      end
-    else
-      throw "Error Level '#{level}' not available"
-    end
-  end 
-end
+require "./logging.rb"
 
 #Clases
 class Team
