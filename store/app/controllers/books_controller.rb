@@ -22,10 +22,7 @@ class BooksController < ApplicationController
   # POST /books or /books.json
   def create
     @book = Book.new(book_params)
-    
-    p book_params
-    p "Longitud del nombre del autor #{@book.author.length} ." 
-    
+  
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: "Book was successfully created." }
