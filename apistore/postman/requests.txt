@@ -1,0 +1,45 @@
+#Companies
+http://localhost:3000/companies/
+--GET
+--POST
+{
+    "name" : "BairesDev"
+}
+--DEL
+--PUT
+{
+    "name":"BairesDev 5"
+}
+
+#Books
+http://localhost:3000/books/
+--GET
+--POST
+{
+    "name":"New Book 3",
+    "price":"5.72",
+    "author":"Author Name 3"
+}
+--DEL
+--PUT
+{
+    "name" : "New Book Updated",
+    "price":15
+}
+
+#Games
+http://localhost:3000/games/
+--GET
+--POST
+{
+    "name" : "New Game",
+    "price":"25.50",
+    "platform": "PS4"
+}
+--DEL
+--PUT
+{
+    "name" : "Game Updated",
+    "price":"12.75",
+    "platform" : "PC"
+}
