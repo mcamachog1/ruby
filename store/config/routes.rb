@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #root "companies#new"
+  #get "/articles", to: "articles#index" 
   resources :games
   resources :books
   resources :companies

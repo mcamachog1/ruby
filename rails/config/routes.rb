@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "articles#index"
-  get "/articles", to: "articles#index"  
+  resources :articles do 
+    resources :comments
+  end
+  
+  get "inicio/:name", to: "inicio#show"
+  get '/inicio', to: "inicio#index"
+  get '/inicio/maryvi', to: "inicio#maryvi"
+  get "/newyear", to: "newyear#index"
+  resources :task
 end
