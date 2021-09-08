@@ -1,0 +1,35 @@
+  resources :roles
+  resources :countries
+  resources :projects
+  resources :people
+
+Los modelos se consultan normal
+
+Index
+http://localhost:3000/countries
+http://localhost:3000/projects
+http://localhost:3000/roles
+
+Show
+http://localhost:3000/countries/1
+http://localhost:3000/projects/1
+http://localhost:3000/roles/1
+
+
+Listar los empleados o clientes de un pais
+http://localhost:3000/people/bycountry/3
+
+Listar los empleados o clientes de un proyecto
+http://localhost:3000/people/byproject/1
+
+Listar los empleados o clientes con un rol
+http://localhost:3000/people/byrole/1
+
+Listar los empleados o clientes con valores para los tres tags
+http://localhost:3000/people/tags/:country_id/:role_id/:project_id
+
+Listar solo los empleados 
+http://localhost:3000/people/employees/1
+
+Listar solo los clientes 
+http://localhost:3000/people/clients/1

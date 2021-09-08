@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_105231) do
+ActiveRecord::Schema.define(version: 2021_09_08_113959) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 2021_09_08_105231) do
     t.boolean "client"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "country_id"
+    t.integer "role_id"
+    t.integer "project_id"
+    t.index ["country_id"], name: "index_people_on_country_id"
+    t.index ["project_id"], name: "index_people_on_project_id"
+    t.index ["role_id"], name: "index_people_on_role_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -44,4 +50,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_105231) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "people", "countries"
+  add_foreign_key "people", "projects"
+  add_foreign_key "people", "roles"
 end
