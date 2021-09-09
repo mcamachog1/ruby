@@ -5,8 +5,9 @@ class Person < ApplicationRecord
 	scope :has_all_tags, ->(country_id, role_id, project_id) { where("country_id = ? AND role_id = ? AND project_id = ?",country_id, role_id, project_id) }		
 	scope :is_employee, -> {where("employee == true")}	
 
-	def is_employee?
-		return self.employee
-	end
+	belongs_to :country
+    belongs_to :roles
+    belongs_to :projects
+
 
 end

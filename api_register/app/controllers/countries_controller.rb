@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :update, :destroy]
+  before_action :set_country_page, only: [:countrypage]
 
   # GET /countries
   def index
@@ -10,6 +11,11 @@ class CountriesController < ApplicationController
 
   # GET /countries/1
   def show
+    render json: @country
+  end
+
+  # GET /countries/page/1
+  def countrypage
     render json: @country
   end
 
@@ -43,6 +49,11 @@ class CountriesController < ApplicationController
     def set_country
       @country = Country.find(params[:id])
     end
+
+    def set_country_page
+      @country = Country.page(params[:page_id])
+    end
+
 
     # Only allow a list of trusted parameters through.
     def country_params
