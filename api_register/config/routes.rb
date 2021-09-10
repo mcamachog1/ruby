@@ -3,17 +3,17 @@ Rails.application.routes.draw do
   resources :countries
   resources :projects
 
-  resources :people do
-    collection do
-      get 'employees'
-      get 'clients'
-    end
-  end
-
 #  resources :people do
-#    get 'employees', on: :collection
-#    get 'clients', on: :collection
+#    collection do
+#      get 'employees'
+#      get 'clients'
+#    end
 #  end
+
+  resources :people do
+    get 'employees', on: :collection
+    get 'clients', on: :collection
+  end
 
 
   get '/countries/page/:page_id', to: "countries#countrypage" 

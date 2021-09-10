@@ -6,8 +6,19 @@ class Person < ApplicationRecord
 	scope :is_employee, -> {where("employee == true")}	
 
 	belongs_to :country
-    belongs_to :roles
-    belongs_to :projects
+    belongs_to :role
+    belongs_to :project
 
+    def full_name
+    	"#{firstname} #{lastname}"
+    end
+
+    def employee_name
+    	if employee
+    		"#{firstname}"
+    	else
+    		""
+    	end
+    end
 
 end
