@@ -3,9 +3,9 @@
 <ul>
   <% @articles.each do |article| %>
     <li>
-
+      <% unless article.archived? %>
       <%= link_to article.title, article %>
-
+      <% end %>
     </li>
   <% end %>
 </ul>

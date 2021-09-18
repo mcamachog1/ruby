@@ -1,0 +1,10 @@
+<h1> Tasks </h1>
+<ul>
+	<%@tasks.each do |t|%>
+	<li>
+		<%=t%>
+	</li>	
+	<%end%>
+</ul>
+
+<a href="<%= new_task_path%>">Add a new task</a>
