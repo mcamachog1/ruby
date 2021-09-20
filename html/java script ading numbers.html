@@ -1,0 +1,33 @@
+<html>
+ <head>
+   <title>Multiply numbers</title>
+
+ </head>
+ <body>
+   <h1>Click me to see a message!</h1>
+   <button type="button">Click</button>
+ </body>
+ <script type="text/javascript">
+  var varh1 = document.querySelector('h1');
+  varh1.onclick = function() {
+    console.log(50 + 50); //Addition operation on two numbers 
+    console.log(40 - 10); //Subtraction operation on two numbers
+  }
+  var mybutton = document.querySelector('button');
+  mybutton.onclick = function() {
+    // use the * operator to multiply 
+    var multiply = 10*10;
+
+    // use the / operator to divide
+    var divide = 10 / 5;
+
+    // operations on integers can result in floating point values, and vice versa
+    var float = 10 / 3;
+
+    console.log("Ten times ten equals", multiply);
+    console.log("Ten divided by five equals", divide);
+    console.log("Ten divided by three equals ", float);    
+  }
+
+ </script> 
+</html>
