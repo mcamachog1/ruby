@@ -1,0 +1,18 @@
+@@variable
+
+Es una variable global dentro de una clase
+Todas las instancias la comparten
+
+--HASH
+--Ejemplo: 
+words = { :one => "uno", :two => "dos", :three => "tres" }
+--Si quiero un arreglo con esas palabras uso el método map sobre el hash
+palabras = words.map {|key, value| "#{key} means #{value}"}
+--Si quiero un string con esas palabras, uso el método join sobre el arreglo
+output = palabras.join(", ")
+
+--Metodos interesantes
+object.class -- dice la clase
+object.is_a?(Integer) -- dice si el objeto es de cierto tipo
+object.inspect -- dice el contenido (lo hace p)
+object.method -- lista los metodos de un objeto

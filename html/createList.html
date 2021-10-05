@@ -1,0 +1,27 @@
+<html>
+ <head>
+   <title>Creating Lists using Javascript</title>
+ </head>
+ <body>
+    
+ </body>
+
+ <script type="text/javascript">
+   
+   var ulist = document.createElement('ul');
+   var item1 = document.createElement('li');
+   var item2 = document.createElement('li');
+   var item3 = document.createElement('li');      
+   var body = document.querySelector('body');
+   
+   body.appendChild(ulist);
+   ulist.appendChild(item1);
+   ulist.appendChild(item2);
+   ulist.appendChild(item3);
+
+   item1.innerHTML="Item 1";
+   item2.innerHTML="Item 2";
+   item3.innerHTML="Item 3";
+
+ </script>
+</html>

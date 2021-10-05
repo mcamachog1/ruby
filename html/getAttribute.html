@@ -1,0 +1,22 @@
+<html>
+ <head>
+   <title>Javascript + HTML Attributes</title>
+ </head>
+ <body>
+   <h1 id="logo">Learn DOM Manipulation with Javascript</h1>
+   <label for="question">What do you want to learn about the DOM?</label>
+   <input type="text" name="question" id="question" placeholder="Insert Question Here">
+ </body>
+<script type="text/javascript">
+  var h1 = document.querySelector('h1');
+  var input = document.querySelector('input[type=text]');
+  
+  console.log("input type:", input.getAttribute('placeholder'));
+  input.setAttribute("placeholder","Ingrese su pregunta aquí");
+  console.log("input type:", input.getAttribute('placeholder'));
+  input.removeAttribute("placeholder");
+  console.log("input type:", input.getAttribute('placeholder'));
+
+</script>
+
+</html>

@@ -1,0 +1,171 @@
+<html>
+ <head>
+   <title>Todo List</title>
+   <style type="text/css">
+        #todos {
+        border: 3px solid rgba(57,129,169,1);
+        border-radius: 10px;
+        width: 100%;
+        
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      #todos > h1 {
+        margin: 10px 0px 0px 0px;
+        padding: 10px 20px 5px 30px;
+        border-bottom: 1px solid black;
+      }
+
+      .addTodo {
+        padding: 10px 15px;
+      }
+
+      #todoList {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      #todoList > li {
+        display: flex;
+        align-items: center;
+
+        padding: 10px 5px;
+        margin: 0px;
+        list-style: none;
+      }
+
+      #todoList > li > input[type=checkbox], #todoList > li > label {
+        padding: 5px 10px;
+      }
+
+      #todoList > li > input[type=checkbox] {
+        flex: 0;
+      }
+
+      #todoList > li >  label {
+        flex: 10;
+      }
+
+      #todoList > li > input[type=text] {
+        flex: 10;
+        margin: 5px 10px;
+        
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1em;
+      }
+
+      #todoList > li > button {
+        flex: 1;
+        margin: 5px;
+      }
+
+      .checked > label {
+        text-decoration: line-through;
+      }
+
+      .addTodo {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .addTodo > input[type=text] {
+        flex: 11;
+
+        border: none;
+        padding: 5px 1px;
+        margin: 0px;
+        font-size: 1em;
+        width: 80%;
+        border-bottom: 2px solid rgb(162, 166, 173);
+
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        transition: border linear 0.5s;
+        webkit-transition: border linear 0.5s;
+      }
+
+      .addTodo input[type=text]:focus {
+        outline: none;
+        border-bottom: 2px solid rgb(114, 158, 234);
+      }
+
+      .addTodo > button {  
+        margin: 5px 5px 5px 10px;
+        flex: 1;
+      }
+
+
+      #todoList li:nth-child(even) {
+        background-color: rgba(114, 158, 234, 0.3);
+      }
+
+   </style>
+ </head>
+ <body>
+   <div id="todos">
+     <h1>To-Dos</h1>
+     <ul id="todoList">
+     </ul>
+     <div class="addTodo">
+       <input type=text placeholder="Add To-Do" id="newTodo">
+       <button id="add">Add</button>
+     </div>
+   </div>
+ </body>
+ <script type="text/javascript">
+   
+      var createTodo = function(todo) {
+        var input = document.createElement('input');
+        input.setAttribute("type","checkbox");
+        var label = document.createElement('label');
+        var deletebutton = document.createElement('button');
+        deletebutton.innerHTML = "Delete";
+        deletebutton.classList.add('delete');
+        var litem = document.createElement('li');
+        
+        litem.appendChild(input);
+        litem.appendChild(label);
+        litem.appendChild(deletebutton);
+
+        label.innerHTML = todo;
+
+        //onchange event listener
+        input.onchange = function(){
+            litem.classList.toggle('checked');
+        }
+
+        //onclick event listener on deletebutton
+        deletebutton.onclick = function(){
+          //var itemparent = this.parentNode;
+          //var parentoftheitemlist = document.querySelector('ul');
+          //parentoftheitemlist.removeChild(itemparent);
+          
+          // Get the child element node
+          var theli = this.parentNode;
+
+          // Remove the child element from the document
+          theli.parentNode.removeChild(theli);
+        }
+        return litem;
+    }
+
+
+
+    var addButton = document.getElementById('add');
+
+    addButton.onclick = function() {
+      var parent = this.parentNode;
+      var input = parent.children[0];
+       
+      var task = input.value;
+      input.value="";
+      if (task !== "") {
+          var todolist = document.getElementById('todoList');
+          todolist.appendChild(createTodo(task));
+      }
+      else
+          return;
+      }
+
+ </script>
+</html>

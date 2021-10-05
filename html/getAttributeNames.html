@@ -1,0 +1,22 @@
+<html>
+ <head>
+   <title>Javascript + HTML Attributes</title>
+ </head>
+ <body>
+   <h1 id="logo">Learn DOM Manipulation with Javascript</h1>
+   <label for="question">What do you want to learn about the DOM?</label>
+   <input type="text" name="question" id="question" placeholder="Insert Question Here">
+   <input type="submit" name="submit">
+ </body>
+ <script type="text/javascript">
+    var h1 = document.querySelector('h1');
+    var input = document.querySelector('input[type=text]');
+    var attrs = input.getAttributeNames();
+    console.log("input attributes:", input.getAttributeNames());
+    for (i=0; i<attrs.length; i++){
+      console.log("atributo:",attrs[i],"\n");
+      console.log("valor:",input.getAttribute(attrs[i]),"\n");      
+
+    }
+ </script>
+</html>

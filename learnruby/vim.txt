@@ -1,0 +1,9 @@
+--Paste
+ESC i SHIFT+RIGHTCLICK
+
+Esto es una
+	prueba de edicion
+		doble tab
+		otro tab
+	primer tab
+end
