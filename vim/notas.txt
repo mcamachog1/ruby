@@ -1,0 +1,6 @@
+--Abrir editor
+vim filename.rb
+--Salvar y salir
+ESC :wq
+--Paste
+ESC i SHIFT+RIGHTCLICK
