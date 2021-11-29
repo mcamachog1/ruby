@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+<%if @message %>
+ <strong>Mensaje:</strong>
+  <%= @message%>
+<%end%>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @student.name %>
 </p>

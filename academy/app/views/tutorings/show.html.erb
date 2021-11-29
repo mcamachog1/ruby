@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student_Id:</strong>
+  <%= @tutoring.student_id %>
+</p>
+
+<p>
+  <strong>Tutor_Id:</strong>
+  <%= @tutoring.tutor_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @tutoring.date %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @tutoring.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @tutoring.end %>
+</p>
+
+<%= link_to 'Edit', edit_tutoring_path(@tutoring) %> |
+<%= link_to 'Back', tutorings_path %>

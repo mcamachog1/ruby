@@ -4,6 +4,10 @@ class StudentsController < ApplicationController
   # GET /students or /students.json
   def index
     @students = Student.all
+    if params[:year]
+      @message = "alumno id = #{params[:id]} anio = #{params[:year]}"
+      @students = Student.where("year = ?", params[:year])
+    end   
   end
 
   # GET /students/1 or /students/1.json
