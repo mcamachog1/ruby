@@ -1,0 +1,36 @@
+--Para hacer visibles las variables dentro de las clases defino getter y setter a mano o uso los accessors
+attr_accessor
+attr_reader
+attr_writer
+
+-- Arrays: valores indexados  
+-- Hashes: pares ordenados (clave,valor) H(clave)=valor H es una función
+-- clave pertenece al Dominio y valor pertenece al Rango
+--array.each=> devuelve una variable hash.each=> devuelve dos variables
+
+--RubyGems
+Viene con Ruby, es un sistema de empaquetado, diseñado para usar, crear, intercambiar e instalar librerías programadas en Ruby
+Algunas librerias las comparten como .zip o tag.zip (codigo fuente)
+--Cómo crear una gema 
+https://guides.rubygems.org/make-your-own-gem/
+
+% gem build Football_Tournament.gemspec
+
+% gem install ./Football_Tournament-0.0.0.gem
+
+--Se puede crear, para compartirla es despues y tambien se explica
+
+-- Rake
+--Creando una tarea con Rake para leer un archivo y cargar datos
+https://medium.com/@balogic/creating-a-rake-task-and-importing-data-from-a-file-to-a-table-in-rails-5-c67ff1f69f42
+-- Leer un archivo .csv
+https://www.rubyguides.com/2018/10/parse-csv-ruby/
+
+Instalar RVM en ubuntu
+sudo apt-add-repository -y ppa:rael-gc/rvm
+sudo apt-get update
+sudo apt-get install rvm
+sudo usermod -a -G rvm $USER
+
+Correr RVM
+source /etc/profile.d/rvm.sh
